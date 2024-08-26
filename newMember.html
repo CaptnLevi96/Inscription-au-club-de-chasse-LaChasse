@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page new Member</title>
+</head>
+<body>
+    
+    <label id="adresse" for="email">Veuillez saisir votre adresse email</label>
+    <input type="email" id="email" placeholder="email@adresse.com" required />
+
+    <div class="button-container">
+        <button class="inscription" onclick="confirmer()">Confirmer</button>
+        <button class="Retour" value="HOME" onclick="RetourAccueil()">Retour à l'accueil</button>
+    </div>
+
+</body>
+
+<style>
+body {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7)), 
+    url(fredrik-ohlander-MU2pWu95UqA-unsplash.jpg) center center / cover no-repeat fixed;
+    height: 100vh;
+    width: 100vw;
+    margin: auto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#adresse {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    text-shadow: 2px 2px #000000;
+    margin-bottom: 50px; 
+    font-weight: 600;
+}
+
+input[type="email"] {
+    margin-top: 10px; 
+    width: 500px; 
+    height: 30px; 
+    font-size: 1.5rem;
+    padding: 10px; 
+    margin-bottom: 60px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; 
+}
+
+button.inscription {
+    background-color: #8e522a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: larger;
+    border-radius: 10px;
+}
+
+button.Retour {
+    background-color: #8e522a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: larger;
+    border-radius: 10px;
+}
+
+button.Retour:hover {
+    background-color: #4f2d16;
+}
+
+button.inscription:hover {
+    background-color: #4f2d16;
+}
+
+button.Retour:active {
+    background-color: #2a170b;
+}
+
+button.inscription:active {
+    background-color: #2a170b;
+}
+</style> 
+
+<script>
+    function confirmer() {
+        let emailField = document.getElementById("email");                           // Définition de l'email //
+        let email = emailField.value;                                               // Espace texte pour le Email //
+        let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;     // Regex à respecter pour que l'adresse email soit valide //
+
+        if (email === "") {
+            alert("Vous devez entrer votre adresse email.");    // Regex à respecter pour que l'adresse email soit valide //
+        } else if (!emailPattern.test(email)) {
+            alert("Veuillez entrer une adresse email valide.");     // Si l'utilisateur mets un email qui ne respecte le regex, l'alerte va s'enclancher //
+        } else {
+            let emails = JSON.parse(localStorage.getItem("emails")) || []; // Si l'email est nouveau, il est ajouté à la liste d'emails, et cette liste mise à jour est sauvegardée dans le localStorage sous "currentEmail. //
+
+
+
+            
+        if (emails.includes(email)) {                                          // Si l'email est déjà enregistré dans localstorage, une alerte est affichée pour informer l'utilisateur. //
+                alert("Cet email est déjà enregistré.");
+        } else {
+                emails.push(email);                                             // Dans un cas contraire, l'email est alors "set" dans le localStorage navigateur et l'utilsateur est mener à la page. saisie.html //
+                localStorage.setItem("emails", JSON.stringify(emails));
+                localStorage.setItem("currentEmail", email); 
+                window.location.href = "saisie.html";
+            }
+        }
+    }
+
+    function RetourAccueil(){ 
+        window.location.href = "main.html";    // Fonction RetourAccueil() pour revenir à la page main.html // 
+    }
+</script>
+</html>

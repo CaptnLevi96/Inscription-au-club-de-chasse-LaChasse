@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page principale</title>
+</head>
+<body>
+
+    <div id="logo-container">
+        <img id="logo" src="LOGO.png" alt="logo">
+    </div>
+    
+    <div>
+        <h1>Bienvenue au <br>Club LaChasse !</h1>
+    </div>
+
+    <div id="welcomeMessage" style="display: none ;">  
+        <h2>Bonjour, <span id="userName"></span> !</h2>  
+    </div>
+
+
+    <div class="p1">
+    <p>Chers passionnés de la chasse,
+        Nous sommes ravis de vous accueillir au sein du Club LaChasse, 
+        un espace dédié aux amateurs et aux professionnels de la chasse. 
+        Notre club vous offre l'opportunité de partager vos expériences, d'apprendre des uns et des autres, 
+        et de participer à des événements exclusifs organisés tout au long de l'année.</p>
+    </div>
+
+        <p class="p2">Inscrivez-vous dès maintenant et <br> rejoignez-nous pour vivre votre passion à fond !</p>
+
+        <button class="inscription"  onClick="PageNewMember()" value="HOME" style="display: block;">Inscription</button>
+    
+</body>
+
+<style>
+
+body {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7)), 
+    url('aaron-james-HF5HETBlN2I-unsplash.jpg') center center / cover no-repeat fixed;
+    height: 100vh;
+    width: 100vw;
+    margin: auto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+h1{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3.5rem;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5rem;
+}
+
+.p1{
+    font-size: 1.5rem;
+    width: 50em;
+    margin: 0%;
+    padding: 10px;
+    height: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #cf7d45;
+    line-height: 30px;
+    font-weight: 600;
+    color: white;
+    box-shadow: 5px 5px #000000;
+    margin-bottom: 20px;
+}
+
+.p2{
+    margin-top: 50px;
+    font-size: 25px;
+    margin-bottom: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+
+button.inscription {
+    background-color: #8e522a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: larger;
+    border-radius: 10px;
+    margin-bottom: 20rem;
+}
+
+button.inscription:hover {
+    background-color: #4f2d16;
+}
+
+button.inscription:active {
+    background-color: #4f2d16;
+}
+
+
+#logo-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 60px;
+
+        }
+
+ #logo {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-top: 310px; 
+    box-shadow: #000000 2px 2px;
+}
+
+#welcomeMessage {
+        background-color: #b56733;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 5px 5px #000000;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        width: 80%;
+        max-width: 600px;
+        text-align: center;
+    }
+
+    #welcomeMessage h2 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {  // le derniers élément entrés dans firstName et lastName dans la page saisie.html seront utilisé pour le message de bienvenue à la page 19 //
+        const firstName = localStorage.getItem("firstName");
+        const lastName = localStorage.getItem("lastName");
+        
+        if (firstName && lastName) { 
+            const welcomeMessage = document.getElementById("welcomeMessage"); 
+            const userNameSpan = document.getElementById("userName");
+            userNameSpan.textContent = firstName + " " + lastName;
+            welcomeMessage.style.display = "block";      // Le message de bienvenue sera afficher en display "bloc" au lieu de "none" à l'initiale que lorseque la page aura recu les éléments firstName && lastName //
+     
+            localStorage.removeItem("firstName");  // removeItem va enlever les firstName et lastName de la base donnée pour le nom et prénom puisse être réutilisé // 
+            localStorage.removeItem("lastName");
+        }
+    });
+
+    function PageNewMember() {
+        window.location.href = "newMember.html";   //* Fonction PageNewMember() pour revenir à la page newMember.html *// 
+    }
+</script>
+</html>

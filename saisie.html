@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page saisie</title>
+</head>
+<body>
+
+    <div class="Bienvenue">
+        <h1 id="bienvenueMessage">Bienvenue !</h1>
+    </div>
+
+    <div class="form-container">
+        <form id="registrationForm">
+          <label for="fname" id="fname">Prénom*</label>
+          <input type="text" id="fname2" name="firstname" placeholder="Inscriver votre prénom" required>
+          <label for="lname" id="lname">Nom de famille*</label>
+          <input type="text" id="lname2" name="lastname" placeholder="Inscriver votre nom de famille" required>
+          <label for="birthday" id="birthday">Entrer votre date de naissance:* </label>
+          <input type="date" id="birthday2" name="birthday" min="1944-01-01" required>
+          <p id="Question">Est-ce-que vous êtes déja un membre?*</p>
+            <input type="radio" id="Oui" name="deja_un_membre" value="Oui">
+            <label id="Yes" for="Yes">Oui</label><br>
+            <input type="radio" id="Non" name="deja_un_membre" value="Non" checked="checked">
+            <label id="No" for="No">Non</label><br>
+          <label for="phone" id="phone">Entrer votre numéro de téléphone:* </label>
+          <input type="tel" id="phone2" name="phone" placeholder="999-999-9999" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
+          <label for="Regles" id="Regles">Confirmez que vous avez lu les règles et que vous avez accepté*</label>
+          <input type="checkbox" id="Regles" name="Regles" value="Regles" required>
+          <button id="submitButton" type="submit">Finaliser votre inscription</button>
+          <label for="ancienMembership" id="ancienMembershipLabel" style="display:none;">Année de fin de l’ancien membership :</label>
+          <select id="ancienMembership" name="ancienMembership" style="display:none;"></select>     
+        </form>
+    </div>
+
+    <div class="button-container">
+        <button class="Retour" onclick="RetourAccueil()">Retour à l'accueil</button>
+    </div>
+
+</body>
+<style>
+body {
+    background: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7)),
+     url('clint-patterson-d30Wo_d9wh0-unsplash.jpg') center center / cover no-repeat fixed;
+    height: 100vh;
+    width: 100vw;
+    margin: auto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.Bienvenue {
+    background: #28382a;
+    width: 30rem;
+    height: 50px;
+    padding: auto;
+    display: inline;
+    box-shadow: 5px 5px #000000;
+    display: flex;
+    margin-top: 200px;
+}
+
+.form-container {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background-color: #f2f2f2; 
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 2rem;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.button-container {
+    margin-top: 20px;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 15rem;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button.Retour {
+    background-color: #8e522a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: larger;
+    border-radius: 10px;
+}
+
+button.Retour:hover {
+    background-color: #4f2d16;
+}
+
+button.Retour:active {
+    background-color: #2a170b;
+}
+
+#Regles{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+#fname{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #28382a;
+}
+
+#lname{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #28382a;
+}
+
+#lname2{
+
+    margin-bottom: 20px;
+    color: #28382a;
+}
+
+#birthday{
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #28382a;
+}
+
+#Question {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #28382a;
+    margin-bottom: 2px; 
+}
+
+input[type=radio] {
+    margin-top: 5px; 
+    margin-right: 5px; 
+    margin-bottom: 15px;
+}
+
+#Yes{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #28382a;
+}
+
+#No{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #28382a;
+}
+
+#phone{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #28382a;
+}
+
+#phone2{
+    margin-bottom: 25px;
+}
+
+
+#ancienMembershipLabel{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #28382a;
+}
+
+</style>
+
+<script>
+
+const desactive = document.getElementById('submitButton');  // const pour définir le boutton submit désactivité //
+
+function changecolor() {
+    if (desactive.disabled == true) {                 // Quand le boutton est désactivé la couleur est grise, mais activé elle devient verte "4CAF50" //
+        desactive.style.background = "grey";
+    } else {
+        desactive.style.background = "#4CAF50";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {               // DOMContentLoaded, qui s'assure que le script ne sera exécuté qu'une fois que le document HTML est entièrement chargé //
+    const formElements = document.querySelectorAll('input[required]');      // Ce const sélectionne tous les éléments <input> qui ont l'attribut required dans le formulaire.//
+    
+    function checkFormValidity() {
+        let allValid = true;
+        formElements.forEach(element => {
+            if (!element.checkValidity()) {          // Cette fonction checkFormValidity() vérifie la validité de chaque champ de formulaire requis en utilisant la méthode checkValidity(). //
+                allValid = false;               
+            }
+        }); 
+        desactive.disabled = !allValid;                   // La fonction changecolor() est appelée pour ajuster la couleur du bouton en fonction de son état (activé ou désactivé). //
+        changecolor(); 
+    }
+
+    formElements.forEach(element => {                               // Cette ligne va s'assurer que toute toutes les lignes soyent remplis avant de réactivé le boutton//
+        element.addEventListener('input', checkFormValidity);
+    });
+
+    checkFormValidity();                                
+});
+
+
+
+    birthday2.max = new Date().toISOString().split("T")[0];  // Cette ligne définit la date maximale du champ de saisie de la date de naissance en utilisant la date actuelle //
+
+    document.addEventListener("DOMContentLoaded", function() {      // Lorsque la page se charge, si un email est stocké dans le localStorage, un message de bienvenue personnalisé est affiché avec cet email. //
+    let email = localStorage.getItem("currentEmail");
+    if (email) {
+        document.getElementById("bienvenueMessage").textContent = "Bienvenue " + email + "!";
+    }
+
+    const formElements = document.querySelectorAll('input[required]');      // Cette partie vérifie si tous les champs obligatoires du formulaire sont valides. Si un champ n'est pas valide, le bouton de soumission est désactivé. //
+    const submitButton = document.getElementById('submitButton');
+    
+    if (submitButton) {  
+        function checkFormValidity() {
+            let allValid = true;
+            formElements.forEach(element => {
+                if (!element.checkValidity()) {
+                    allValid = false;
+                }
+            });
+            submitButton.disabled = !allValid;
+        }
+
+        formElements.forEach(element => {
+            element.addEventListener('input', checkFormValidity);
+        });
+
+        checkFormValidity(); 
+    }
+
+        function calculateAge(birthday) {               // Cette fonction calcule l'âge de l'utilisateur à partir de sa date de naissance. //
+            const today = new Date();
+            const birthDate = new Date(birthday);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDifference = today.getMonth() - birthDate.getMonth();
+
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+    
+    
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {    // Lors de la soumission du formulaire, l'âge est vérifié. Si l'utilisateur a moins de 18 ans, un message d'alerte est affiché et il est redirigé vers la page principale. Sinon, le prénom et le nom sont stockés dans le localStorage avant la redirection. //
+    event.preventDefault(); 
+
+    const birthday = document.getElementById("birthday2").value; // Cette partie gère l'affichage conditionnel du champ permettant de sélectionner l'année de fin de l'ancien membership. Si l'utilisateur est un ancien membre, il pourra choisir une année de fin. //
+    const age = calculateAge(birthday);
+
+    if (age < 18) {
+        alert("Vous n'avez pas l'âge requis pour accéder à ce club."); // Si l'utilsateur à moins de 18 ans, un alerte se mets et l'utilisateur est reconduit à la page d'accueil. //
+        window.location.href = "main.html";
+        return;
+    }
+    
+    const firstName = document.getElementById("fname2").value;
+    const lastName = document.getElementById("lname2").value;
+    localStorage.setItem("firstName", firstName);
+    localStorage.setItem("lastName", lastName);
+    
+    window.location.href = "main.html";       
+});
+        checkFormValidity();
+    });
+
+    function RetourAccueil(){
+        window.location.href = "main.html"; // Fonction RetourAccueil() pour revenir à la page main.html // 
+    }
+    document.addEventListener("DOMContentLoaded", function() {     // Cette fonction est utilisée pour afficher ou masquer les éléments combobox et label //
+
+        function toggleAncienMembership(show) {
+        const combobox = document.getElementById("ancienMembership");      // La fonction prend un paramètre show, qui est un vrau ou faux, indiquant si ces éléments doivent être affichés ou masqués. //
+        const label = document.getElementById("ancienMembershipLabel");
+        if (show) {
+            combobox.style.display = "block";              // Si show est true, cela signifie que l'utilisateur a probablement sélectionné une option indiquant qu'il est un ancien membre. //
+            label.style.display = "block";
+        } else {
+            combobox.style.display = "none";       // Finalement, le style CSS des éléments combobox et label est modifié pour les masquer (display: none), ce qui les rendra invisibles dans le formulaire. //
+            label.style.display = "none";
+        }
+    }
+
+    function populateYears(birthday) {                                      // Fonction pour remplir le combobox avec des années //
+        const combobox = document.getElementById("ancienMembership");     //  C'est dans cet élément que les options d'années seront ajoutées. //
+        const today = new Date();                                       //  Cette variable contient l'objet Date représentant la date actuelle. //
+        const birthDate = new Date(birthday);
+        const startYear = birthDate.getFullYear() + 18;        // On calcule l'année de départ pour le combobox en ajoutant 18 ans à l'année de naissance de l'utilisateur //
+        const endYear = today.getFullYear();
+        combobox.innerHTML = ''; 
+        for (let year = startYear; year <= endYear; year++) {  // La boucle parcourt chaque année depuis startYear (l'année où l'utilisateur atteint 18 ans) jusqu'à endYear (l'année actuelle). //
+            const option = document.createElement("option");
+            option.value = year;            // La valeur de l'option est définie sur l'année courante //
+            option.textContent = year;      // Le texte visible dans le combobox est également l'année courante. //
+            combobox.appendChild(option);  // L'élément option est ajouté à la liste déroulante (combobox) en utilisant combobox.appendChild(option) //
+        }
+    }
+
+    const radios = document.querySelectorAll('input[name="deja_un_membre"]');       // forEach : La méthode forEach permet de parcourir chaque élément de la NodeList radios. //
+    radios.forEach(radio => {
+        radio.addEventListener('change', function() {                          
+            const isMember = document.getElementById("Oui").checked;            //  Cette ligne vérifie si le bouton radio avec l'ID "Oui" est sélectionné. La propriété checked retourne vrai //
+            const birthday = document.getElementById("birthday2").value;
+            if (isMember && birthday) {                                    // Cette condition vérifie deux choses :  isMember est vrai (c'est-à-dire que l'utilisateur a sélectionné "Oui"), birthday n'est pas vide (c'est-à-dire que l'utilisateur a saisi une date de naissance). //                   
+                populateYears(birthday);
+            }
+            toggleAncienMembership(isMember);       //  Cette ligne appelle la fonction toggleAncienMembership, en passant isMember comme argument. Cette fonction affiche ou masque le combobox et son label en fonction de si l'utilisateur a sélectionné "Oui" ou "Non". //
+        });
+    });
+
+    document.getElementById("birthday2").addEventListener("change", function() {  // Cette ligne récupère la valeur de l'élément input avec l'ID "birthday2", qui contient la date de naissance de l'utilisateur //
+        const isMember = document.getElementById("Oui").checked;
+        if (isMember) {
+            populateYears(this.value);
+        }
+
+        
+    });
+
+    
+});
+    
+</script>
+    
+    
+</html>
